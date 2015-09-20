@@ -1,0 +1,30 @@
+{
+  "name": "smart-sticky-header",
+  "version": "0.0.1",
+  "description": "jquery plugin used to convert an element in a sticky header",
+  "main": "jquery-smart-sticky-header.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yaplas/smart-sticky-header.git"
+  },
+  "author": "yaplas",
+  "bugs": {
+    "url": "https://github.com/yaplas/smart-sticky-header/issues"
+  },
+  "homepage": "https://github.com/yaplas/smart-sticky-header",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [ 
+    "jquery", 
+    "scroll", 
+    "fixed", 
+    "affix",
+    "sticky",
+    "header"
+   ],
+  "license": "MIT"
+}
