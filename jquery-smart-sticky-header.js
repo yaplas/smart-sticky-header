@@ -21,7 +21,7 @@
     var $body = $(window.document.body);
     var $elem = $(elem);
     $elem.data('SmartStickyHeader', true);
-    var railId = 'ssr' + (++count);
+    var railId = 'ssh' + (++count);
 
     var width, height, offset, $rail, $replacement , $shadow;
 
@@ -77,8 +77,13 @@
       var diff = scroll - lastScroll;
       lastScroll = scroll;
       var value = $rail.scrollTop()+diff;
-      if (value < height && scroll > height) {
-        $('.sticky-header-offset').css({height: (value > 0 ? height - value : height) + 'px'});
+      value = value < 0 ? 0 : value;
+      if (value < height) {
+        if (scroll > height) {
+          $('.sticky-header-offset').css({height: (height - value) + 'px'});
+        } else {
+          $('.sticky-header-offset').css({height: (scroll - value) + 'px'});
+        }
       } else {
         $('.sticky-header-offset').css({height: 0});
       }
