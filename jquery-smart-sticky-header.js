@@ -80,12 +80,12 @@
       var value = $rail.scrollTop();
       if (value < height) {
         if (scroll > height) {
-          $('.sticky-header-offset').css({height: (height - value) + 'px'});
+          $('.sticky-header-offset').css({'margin-top': (height - value) + 'px'});
         } else {
-          $('.sticky-header-offset').css({height: (scroll - value) + 'px'});
+          $('.sticky-header-offset').css({'margin-top': (scroll - value) + 'px'});
         }
       } else {
-        $('.sticky-header-offset').css({height: 0});
+        $('.sticky-header-offset').css({'margin-top': 0});
       }
     }
 
