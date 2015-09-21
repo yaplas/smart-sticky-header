@@ -27,7 +27,7 @@
 
     mount();
 
-    waitForContent(200);
+    waitForContent(50);
 
     $window.on('scroll', scrollHandler);
     $window.on('resize', debounce(function(){
@@ -76,8 +76,8 @@
       var scroll = $(window).scrollTop();
       var diff = scroll - lastScroll;
       lastScroll = scroll;
-      var value = $rail.scrollTop()+diff;
-      value = value < 0 ? 0 : value;
+      $rail.scrollTop($rail.scrollTop()+diff);
+      var value = $rail.scrollTop();
       if (value < height) {
         if (scroll > height) {
           $('.sticky-header-offset').css({height: (height - value) + 'px'});
@@ -87,7 +87,6 @@
       } else {
         $('.sticky-header-offset').css({height: 0});
       }
-      $rail.scrollTop(value);
     }
 
     function waitForContent(times) {
