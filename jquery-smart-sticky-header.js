@@ -15,12 +15,12 @@
   $.SmartStickyHeader = function(elem, options) {
 
     options = options || {};
-    options.railClass = options.railClass || 'sticky-header-rail';
+    options.railClass = (options.railClass ? options.railClass + ' ' : '') + 'sticky-header-rail';
 
     var $window = $(window);
     var $body = $(window.document.body);
     var $elem = $(elem);
-    $elem.data('SmartStickyHeader', true);
+    $elem.data('SmartStickyHeader', true).css({'pointer-events':'all'});
     var railId = 'ssh' + (++count);
 
     var width, height, offset, $rail, $replacement , $shadow;
@@ -48,11 +48,13 @@
         width: width + 'px',
         height: height + 'px',
         overflow:'hidden',
-        position:'fixed'
+        position:'fixed',
+        'pointer-events': 'none'
       });
 
       $shadow = $('<div class="sticky-header-shadow"></div>').css({
-        height: height + 'px'
+        height: height + 'px',
+        'pointer-events': 'none'
       });
 
       $replacement = $('<div class="sticky-header-replacement"></div>').css({
