@@ -18,7 +18,6 @@
     options.railClass = (options.railClass ? options.railClass + ' ' : '') + 'sticky-header-rail';
 
     var $window = $(window);
-    var $body = $(window.document.body);
     var $elem = $(elem);
     $elem.data('SmartStickyHeader', true).css({'pointer-events':'all'});
     var railId = 'ssh' + (++count);
@@ -43,7 +42,7 @@
     function mount() {
       offset = $elem.offset();
       width = $elem.outerWidth();
-      height = $elem.height();
+      height = $elem.outerHeight(true);
 
       $rail = $('<div id="' + railId + '" class="' + options.railClass + '"></div>').css({
         top:0,
