@@ -25,21 +25,25 @@
 
     var width, height, offset, $rail, $replacement , $shadow;
 
-    mount();
-
-    waitForContent(50);
+    init();
 
     $window.on('scroll', scrollHandler);
     $window.on('resize', debounce(function(){
       unmount();
-      mount();
-      waitForContent(1);
+      init();
     }, 500));
+
+    function init() {
+      setTimeout(function(){
+        mount();
+        setTimeout(scrollHandler,10);
+      }, 10);
+    }
 
     function mount() {
       offset = $elem.offset();
       width = $elem.outerWidth();
-      height = $elem.outerHeight();
+      height = $elem.height();
 
       $rail = $('<div id="' + railId + '" class="' + options.railClass + '"></div>').css({
         top:0,
@@ -88,14 +92,6 @@
         }
       } else {
         $('.sticky-header-offset').css({'margin-top': 0});
-      }
-    }
-
-    function waitForContent(times) {
-      times = times || 0;
-      if (times>=0 && exists()) {
-        scrollHandler();
-        setTimeout(function() { waitForContent(times-1); }, 100);
       }
     }
 
