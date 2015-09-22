@@ -80,6 +80,9 @@
       if (!$rail) {
         return;
       }
+      if (!exists()) {
+        return $window.off('scroll', scrollHandler);
+      }
       lastScroll = lastScroll || 0;
       var scroll = $(window).scrollTop();
       var diff = scroll - lastScroll;
