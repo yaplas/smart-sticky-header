@@ -77,6 +77,9 @@
 
     var lastScroll;
     function scrollHandler(){
+      if (!$rail) {
+        return;
+      }
       lastScroll = lastScroll || 0;
       var scroll = $(window).scrollTop();
       var diff = scroll - lastScroll;
