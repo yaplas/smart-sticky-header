@@ -88,16 +88,6 @@
       var diff = scroll - lastScroll;
       lastScroll = scroll;
       $rail.scrollTop($rail.scrollTop()+diff);
-      var value = $rail.scrollTop();
-      if (value < height) {
-        if (scroll > height) {
-          $('.sticky-header-offset').css({'margin-top': (height - value) + 'px'});
-        } else {
-          $('.sticky-header-offset').css({'margin-top': (scroll - value) + 'px'});
-        }
-      } else {
-        $('.sticky-header-offset').css({'margin-top': 0});
-      }
     }
 
     function exists() {
