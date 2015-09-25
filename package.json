@@ -1,6 +1,6 @@
 {
   "name": "smart-sticky-header",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "jquery plugin used to convert an element in a sticky header",
   "main": "jquery-smart-sticky-header.js",
   "repository": {
@@ -18,10 +18,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [ 
-    "jquery", 
-    "scroll", 
-    "fixed", 
+  "keywords": [
+    "jquery",
+    "scroll",
+    "fixed",
     "affix",
     "sticky",
     "header"
