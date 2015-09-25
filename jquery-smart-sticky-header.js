@@ -84,7 +84,8 @@
         return $window.off('scroll', scrollHandler);
       }
       lastScroll = lastScroll || 0;
-      var scroll = $(window).scrollTop();
+      // avoid negative values when scroll bouncing (eg. safari)
+      var scroll = Math.max(0, $(window).scrollTop());
       var diff = scroll - lastScroll;
       lastScroll = scroll;
       $rail.scrollTop($rail.scrollTop()+diff);
