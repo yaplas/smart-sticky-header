@@ -88,7 +88,14 @@
       var scroll = Math.max(0, $(window).scrollTop());
       var diff = scroll - lastScroll;
       lastScroll = scroll;
-      $rail.scrollTop($rail.scrollTop()+diff);
+
+      // if header has a top margin, only reveal it when visible at the top
+      var marginTop = parseInt($elem.css('margin-top'));
+
+      var railScrollTop = $rail.scrollTop() + diff;
+      railScrollTop = Math.max(Math.min(scroll, marginTop), railScrollTop);
+      $rail.scrollTop(railScrollTop);
+
     }
 
     function exists() {
