@@ -24,13 +24,35 @@
 
     var width, height, offset, $rail, $replacement , $shadow;
 
+    var lastScroll;
+    var scrollHandler = function(){
+      if (!$rail || !exists()) {
+        return;
+      }
+
+      lastScroll = lastScroll || 0;
+      // avoid negative values when scroll bouncing (eg. safari)
+      var scroll = Math.max(0, $(window).scrollTop());
+      var diff = scroll - lastScroll;
+      lastScroll = scroll;
+
+      // if header has a top margin, only reveal it when visible at the top
+      var marginTop = parseInt($elem.css('margin-top'));
+
+      var railScrollTop = $rail.scrollTop() + diff;
+      railScrollTop = Math.max(Math.min(scroll, marginTop), railScrollTop);
+      $rail.scrollTop(railScrollTop);
+    };
+
+    var resizeHandler = debounce(function(){
+      unmount();
+      init();
+    }, 500);
+
     init();
 
     $window.on('scroll', scrollHandler);
-    $window.on('resize', debounce(function(){
-      unmount();
-      init();
-    }, 500));
+    $window.on('resize', resizeHandler);
 
     function init() {
       setTimeout(function(){
@@ -75,31 +97,13 @@
       $rail.replaceWith($elem);
     }
 
-    var lastScroll;
-    function scrollHandler(){
-      if (!$rail) {
-        return;
-      }
-      if (!exists()) {
-        return $window.off('scroll', scrollHandler);
-      }
-      lastScroll = lastScroll || 0;
-      // avoid negative values when scroll bouncing (eg. safari)
-      var scroll = Math.max(0, $(window).scrollTop());
-      var diff = scroll - lastScroll;
-      lastScroll = scroll;
-
-      // if header has a top margin, only reveal it when visible at the top
-      var marginTop = parseInt($elem.css('margin-top'));
-
-      var railScrollTop = $rail.scrollTop() + diff;
-      railScrollTop = Math.max(Math.min(scroll, marginTop), railScrollTop);
-      $rail.scrollTop(railScrollTop);
-
-    }
-
     function exists() {
-      return $('#'+railId).length;
+      if($('#'+railId).length)  {
+        return true;
+      }
+      $window.off('scroll', scrollHandler);
+      $window.off('resize', resizeHandler);
+      return false;
     }
 
     function debounce(func, milliseconds) {
