@@ -53,6 +53,7 @@
 
     $window.on('scroll', scrollHandler);
     $window.on('resize', resizeHandler);
+    $window.on('orientationchange', resizeHandler);
 
     function init() {
       setTimeout(function(){
