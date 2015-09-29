@@ -1,6 +1,6 @@
 {
   "name": "smart-sticky-header",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "homepage": "https://github.com/yaplas/smart-sticky-header",
   "description": "jQuery plugin used to convert an element in a sticky header",
   "repository": {
