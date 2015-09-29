@@ -103,6 +103,7 @@
       }
       $window.off('scroll', scrollHandler);
       $window.off('resize', resizeHandler);
+      $window.off('orientationchange', resizeHandler);
       return false;
     }
 
