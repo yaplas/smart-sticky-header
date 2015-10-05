@@ -60,14 +60,13 @@
     }
 
     function mount(times) {
-      height = $elem.outerHeight(true);
-
-      if (height <= 0 && times > 0) {
+      if ($elem.height() <= 0 && times > 0) {
         return setTimeout(function(){ mount(--times); }, 50);
       }
 
       offset = $elem.offset();
       width = $elem.outerWidth();
+      height = $elem.outerHeight(true);
 
       $rail = $('<div id="' + railId + '" class="' + options.railClass + '"></div>').css({
         top:0,
