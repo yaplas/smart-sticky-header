@@ -56,16 +56,18 @@
     $window.on('orientationchange', resizeHandler);
 
     function init() {
-      setTimeout(function(){
-        mount();
-        setTimeout(scrollHandler,10);
-      }, 10);
+      setTimeout(function() { mount(100); }, 50);
     }
 
-    function mount() {
+    function mount(times) {
+      height = $elem.outerHeight(true);
+
+      if (height <= 0 && times > 0) {
+        return setTimeout(function(){ mount(--times); }, 50);
+      }
+
       offset = $elem.offset();
       width = $elem.outerWidth();
-      height = $elem.outerHeight(true);
 
       $rail = $('<div id="' + railId + '" class="' + options.railClass + '"></div>').css({
         top:0,
@@ -91,6 +93,8 @@
       $elem.before($rail);
       $rail.append($elem);
       $rail.append($shadow);
+
+      setTimeout(scrollHandler,10);
     }
 
     function unmount() {
