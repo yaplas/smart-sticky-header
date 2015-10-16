@@ -17,7 +17,7 @@ $('header').smartStickyHeader();
 ## To avoid auto-hide
 
 ```css
-.sticky-header-rail .header-shadow {
+.sticky-header-rail .sticky-header-shadow {
   display:none;
 }
 ```
