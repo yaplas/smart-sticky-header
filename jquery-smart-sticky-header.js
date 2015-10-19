@@ -45,25 +45,28 @@
     };
 
     var resizeHandler = debounce(function(){
+      if ($window.data('lastWidth') === $window.width()) {
+        return;
+      }
       unmount();
-      init();
+      mount(10);
     }, 500);
 
-    init();
+    mount(10);
 
     $window.on('scroll', scrollHandler);
     $window.on('resize', resizeHandler);
     $window.on('orientationchange', resizeHandler);
 
-    function init() {
-      setTimeout(function() { mount(100); }, 50);
-    }
+    // functions
 
     function mount(times) {
+      $window.data('lastWidth', $window.width());
+
       height = $elem.outerHeight(true);
 
       if (height <= 0 && times > 0) {
-        return setTimeout(function(){ mount(--times); }, 50);
+        return setTimeout(function(){ mount(--times); }, 200);
       }
 
       offset = $elem.offset();
