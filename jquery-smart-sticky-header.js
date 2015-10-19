@@ -52,7 +52,7 @@
       mount(10);
     }, 500);
 
-    mount(10);
+    setTimeout(function() { mount(10); }, 10);
 
     $window.on('scroll', scrollHandler);
     $window.on('resize', resizeHandler);
