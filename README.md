@@ -8,6 +8,10 @@ The header is hidden on scrolling down and is shown again on scrolling up.
 bower install smart-sticky-header
 ```
 
+```
+npm install smart-sticky-header
+```
+
 ### Usage
 
 ```js
